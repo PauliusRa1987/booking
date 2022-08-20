@@ -28,8 +28,8 @@ Route::prefix('order')->name('order-')->group(function () {
     Route::post('store/{id}', [OrderController::class, 'store'])->name('store')->middleware('roleP:user');
     Route::get('edit', [OrderController::class, 'edit'])->name('edit')->middleware('roleP:admin');
     Route::put('update/{order}', [OrderController::class, 'update'])->name('update')->middleware('roleP:admin');
-    Route::delete('delete/{order}', [OrderController::class, 'destroy'])->name('destroy');
-    Route::get('show/{order}', [OrderController::class, 'show'])->name('show')->middleware('roleP:user');
+    Route::delete('delete/{order}', [OrderController::class, 'destroy'])->name('destroy')->middleware('roleP:user');
+    Route::get('pdf_print/{order}', [OrderController::class, 'pdf_print'])->name('pdf_print')->middleware('roleP:admin');
 });
 
 // country round

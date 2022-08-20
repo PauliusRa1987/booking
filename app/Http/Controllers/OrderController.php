@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Order;
 use Illuminate\Http\Request;
-use App\Models\Hotel;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
@@ -109,9 +109,10 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function pdf_print(Order $order)
     {
-        //
+        $pdf = Pdf::loadView('front.pdf', ['order' => $order]);
+        return $pdf->download('order-' . $order->id . '.pdf');
     }
 
     /**

@@ -39,6 +39,7 @@
                                             @csrf
                                             @method('put')
                                             <button class="btn btn-outline-warning m-2 " type="submit">Approve</button>
+                                        <a class="btn btn-outline-success m-2 " href="{{route('order-pdf_print', $order)}}">Print pdf</a>
                                         </div>
                                     </td>
                                 </tr>
