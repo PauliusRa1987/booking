@@ -20,6 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('hotel_id');
             $table->foreign('hotel_id')->references('id')->on('hotels');
             $table->string('status')->default('pending');
+            $table->string('holi_day', 200)->nullable();
             $table->timestamps();
         });
     }

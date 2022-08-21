@@ -17,6 +17,7 @@
                                 <th scope="col">Hotel Name</th>
                                 <th scope="col">Country</th>
                                 <th scope="col">Price</th>
+                                <th scope="col">Depature</th>
                                 <th scope="col">Duration</th>
                                 <th scope="col">Order Status</th>
                                 <th scope="col">Image</th>
@@ -30,6 +31,7 @@
                                     <td class="text-center">{{$order->getHotelInfo->hotel_name}}</td>
                                     <td class="text-center">{{$order->getHotelInfo->getCountryInfo->country_name}}</td>
                                     <td class="text-center">$ {{$order->getHotelInfo->price}}</td>
+                                    <td class="text-center">{{$order->holi_day}}</td>
                                     <td class="text-center">{{$order->getHotelInfo->duration}} days</td>
                                     <td class="text-center">{{$order->status}}</td>
                                     <td class="text-center"><img src="{{$order->getHotelInfo->photo}}" alt="hotel_image"></td>

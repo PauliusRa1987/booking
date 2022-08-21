@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Order;
 use Illuminate\Http\Request;
@@ -93,11 +93,16 @@ class OrderController extends Controller
      * @param  \App\Http\Requests\StoreOrderRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(int $hotelId)
+    public function store(int $hotelId, Request $request)
     {
         $order = new Order;
+        $reqTime = date('Y-m-d', strtotime("$request->timeD"));
+        $timeToCount = Carbon::create($reqTime);
+        $timeToCount->addDays(DB::table('hotels')->where('id', $hotelId)->value('duration'));
+        $timeFinish = $timeToCount->format('Y-m-d');
         $order->user_id = Auth::user()->id;
         $order->hotel_id = $hotelId;
+        $order->holi_day = $timeFinish;
         $order->save();
         return redirect()->route('order-orderList', Auth::user()->id);
     }

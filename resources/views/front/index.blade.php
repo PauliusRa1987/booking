@@ -34,9 +34,16 @@
                             <div class="d-flex justify-content-between mt-2">
                                 @if(Auth::user())
                                 <form action="{{route('order-store', $hotel->id)}}" method="post">
-
+                                    <div class="form-group div-btn-box1">
+                                        <label>Pick a Date:</label>
+                                        <div class="form-row ">
+                                            <div class="col-10 m-1">
+                                                <input type="date" class="form-control" name="timeD" />
+                                            </div>
+                                        </div>
+                                    </div>
                                     @csrf
-                                    <button class="btn btn-outline-success " type="submit">Book Holiday!</button>
+                                <button class="btn btn-outline-success mt-2" type="submit">Book Holiday!</button>
                                 </form>
                                 @else
                                 <p>Please Login for book Holiday!</p>
